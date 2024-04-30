@@ -152,6 +152,7 @@ body {
   border-radius: var(--border-radius);
   background-color: var(--filled-bg);
   padding: 5px;
+  align-items: center;
 }
 
 .cell_i {
