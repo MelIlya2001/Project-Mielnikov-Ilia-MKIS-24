@@ -143,7 +143,7 @@ body {
 
 .header {
   position: absolute;
-  top: 3%;
+  top: 10%;
   left: 3%;
   display: flex;
   flex-wrap: wrap;
@@ -154,6 +154,15 @@ body {
   padding: 5px;
   align-items: center;
 }
+
+.burger {
+    position: absolute;
+    top: 0.4%;
+    left: 0.4%;
+    height: var(--cell-size);
+    width: var(--cell-size);
+}
+
 
 .cell_i {
     display: flex;

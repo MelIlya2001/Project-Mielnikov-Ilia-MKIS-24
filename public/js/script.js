@@ -1,6 +1,6 @@
 const GRID_SIZE = 9;
 const BOX_SIZE = 3;
-let past_level = JSON.parse(localStorage.getItem('id'))
+let past_level = JSON.parse(localStorage.getItem("id"));
 
 function convertPositionToIndex(row, column) {
   return row * GRID_SIZE + column;
@@ -89,26 +89,22 @@ function generateSudoku(markup) {
   return sudoku;
 }
 
-
 function createEmptyGrid(markup) {
   let str = markup;
 
-  let array = new Array(GRID_SIZE).fill().map(() => new Array(GRID_SIZE).fill(null));
+  let array = new Array(GRID_SIZE)
+    .fill()
+    .map(() => new Array(GRID_SIZE).fill(null));
 
-  for (let i = 0; i < GRID_SIZE; i++){
-    for(let j = 0; j < GRID_SIZE; j++){
-      array[i][j] = (str[0] == 0) ? null : Number(str[0]);
-      str = str.slice(1);      
+  for (let i = 0; i < GRID_SIZE; i++) {
+    for (let j = 0; j < GRID_SIZE; j++) {
+      array[i][j] = str[0] == 0 ? null : Number(str[0]);
+      str = str.slice(1);
     }
   }
 
-  
-
-  
   return array;
 }
-
-
 
 function findEmptyCell(grid) {
   for (let row = 0; row < GRID_SIZE; row++) {
@@ -169,13 +165,10 @@ function validateBox(grid, row, column, value) {
   return true;
 }
 
-
-
-
-
 let error_message = document.querySelector(".error");
-let button = document.querySelector("button");
+let button = document.querySelector("#Change");
 const markup = document.querySelector("#markup").innerHTML;
+const header = document.querySelector(".header");
 
 const sudoku = new Sudoku(markup);
 
@@ -185,14 +178,14 @@ let selectedCell;
 init();
 
 function init() {
-  console.log(past_level)
+  console.log(past_level);
   if (!past_level) {
-    localStorage.setItem('id', 1);
+    localStorage.setItem("id", 1);
     past_level = 1;
   }
 
   button.disabled = true; //по умолчанию отключена, т.к. по умолчанию в инпуте следущий после последнего пройденного уровня. Уровень игрока хранится в localstorage
-  
+
   initCells();
   initNumbers();
   initRemover();
@@ -353,6 +346,11 @@ function initKeyEvent() {
       onNumberClick(parseInt(event.key));
     }
   });
+
+}
+
+function OnExitBurger(button) {
+    header.classList.toggle("hidden");
 }
 
 function winAnimation() {
@@ -370,8 +368,8 @@ function winAnimation() {
   }
 
   past_level++;
-  localStorage.setItem('id', past_level);
-  OnChangeLevel(past_level)
+  localStorage.setItem("id", past_level);
+  OnChangeLevel(past_level);
 }
 
 function OnChangeLevel(value) {

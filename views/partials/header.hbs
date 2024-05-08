@@ -1,8 +1,9 @@
-<div class="header">
+<button onclick="OnExitBurger(this)" class="burger">=</button>
+<div class="header hidden">
   <h1>Уровень {{level_id}}</h1>
   <form action="/" method="GET">
     <input class="cell_i" name="next_level" type="number" placeholder="Выберите уровень" value="{{next_level}}" onchange="OnChangeLevel(this.value)"></input>
-    <button type="submit">Перейти</button>
+    <button id="Change" type="submit">Перейти</button>
   </form>
   <p class="error">Уровень не открыт или недоступен</p>
 </div>
